@@ -1,6 +1,7 @@
-import board
-import analogio
 import time
+
+import analogio
+import board
 
 
 # Function to simplify the math of reading the temperature.
@@ -28,13 +29,13 @@ def c_to_f( value ):
 
 
 # Create TMP235 analog input.
-tmp235 = analogio.AnalogIn( board.GP28 )
+tmp235_sensor = analogio.AnalogIn( board.GP28 )
 
 # Loop forever.
 while True:
   # Read the temperature in Celsius.
-  temp_C = tmp235_temperature_c( tmp235 )
-  voltage = get_voltage( tmp235 )
+  temp_C = tmp235_temperature_c( tmp235_sensor )
+  voltage = get_voltage( tmp235_sensor )
   print( f"Volts: {voltage}" )
   print( f"TempC: {voltage_to_c( voltage )}" )
   # Print out the value and delay a second before looping again.
