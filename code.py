@@ -28,17 +28,18 @@ def c_to_f( value ):
   return value * 1.8 + 32
 
 
-# Create TMP235 analog input.
-tmp235_sensor = analogio.AnalogIn( board.GP28 )
+if __name__ == '__main__':
+  # Create TMP235 analog input.
+  tmp235_sensor = analogio.AnalogIn( board.GP28 )
 
-# Loop forever.
-while True:
-  # Read the temperature in Celsius.
-  temp_C = tmp235_temperature_c( tmp235_sensor )
-  voltage = get_voltage( tmp235_sensor )
-  print( f"Volts: {voltage}" )
-  print( f"TempC: {voltage_to_c( voltage )}" )
-  # Print out the value and delay a second before looping again.
-  print( f"Reference temperature: {temp_C:.2f} C {c_to_f( temp_C ):.2f} F" )
-  print()
-  time.sleep( 2.0 )
+  # Loop forever.
+  while True:
+    # Read the temperature in Celsius.
+    temp_C = tmp235_temperature_c( tmp235_sensor )
+    voltage = get_voltage( tmp235_sensor )
+    print( f"Volts: {voltage}" )
+    print( f"TempC: {voltage_to_c( voltage )}" )
+    # Print out the value and delay a second before looping again.
+    print( f"Reference temperature: {temp_C:.2f} C {c_to_f( temp_C ):.2f} F" )
+    print()
+    time.sleep( 2.0 )
